@@ -1,4 +1,3 @@
-
 const state = {
     browserHeaderTitle: 'Bates-'
 }
@@ -11,7 +10,6 @@ const mutations = {
     }
 }
 const actions = {}
-
 export default {
     state,
     getters,

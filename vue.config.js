@@ -1,18 +1,15 @@
 const path = require('path')
-
-const resolve = dir => path.join(__dirname,dir)
-//项目基本路径  process.env.NODE_ENV 判断当前是开发环境还是要打包编译  production 是生产环境要开始编译
-const BASE_URL = process.env.NODE_ENV = 'procution' ? '/www.baidu.com' : '/'
-
-let TARGET = 'http://127.0.0.1:8080'
-
+const resolve = dir => path.join(__dirname, dir)
+// 项目基本路径  process.env.NODE_ENV 判断当前是开发环境还是要打包编译  production 是生产环境要开始编译
+const BASE_URL = process.env.NODE_ENV === 'production' ? '/www.baidu.com' : '/'
+const TARGET = 'http://127.0.0.1:8080'
 module.exports = {
     lintOnSave: false,
     publicPath: BASE_URL,
     chainWebpack: config => {
-        config.resolve.alias.set('@',resolve('src')).set('_c',resolve('src/components'))
+        config.resolve.alias.set('@', resolve('src')).set('_c', resolve('src/components'))
     },
-    //打包是不生成.map文件 减少打包体积 加快打包速度
+    // 打包是不生成.map文件 减少打包体积 加快打包速度
     productionSourceMap: false,
     // 配置代理
     devServer: {
@@ -31,7 +28,6 @@ module.exports = {
             }
         }
     },
-
     pluginOptions: {
         'style-resources-loader': {
             preProcessor: 'less',

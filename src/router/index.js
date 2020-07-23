@@ -3,20 +3,17 @@ import VueRouter from 'vue-router'
 import routes from './router'
 import store from '@/store'
 import { setTitle } from '@/lib/tools' // 设置浏览器头部标题
-//引入nprogress
+// 引入nprogress
 import NProgress from 'nprogress'
-import 'nprogress/nprogress.css' //这个样式必须引入
-
+import 'nprogress/nprogress.css' // 这个样式必须引入
 Vue.use(VueRouter)
-
 // 简单配置
 NProgress.inc(0.2)
 NProgress.configure({ easing: 'ease', speed: 500, showSpinner: false })
-
 const router = new VueRouter({
-  routes
+    routes
 })
-router.beforeEach((to,from,next) => {
+router.beforeEach((to, from, next) => {
     NProgress.start() // 启动Progress
     const browserHeaderTitle = to.meta.title
     store.commit('SET_BROWSERHEADERTITLE', {
